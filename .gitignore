@@ -1,0 +1,5 @@
+node_modules
+.env
+.authorized_servers.json
+git_push.sh
+INSTALL_SM.md
