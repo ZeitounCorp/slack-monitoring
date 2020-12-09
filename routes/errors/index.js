@@ -6,9 +6,10 @@ const isReachable = require('is-reachable');
 const api_key_missing = 'You didn\'t provide a valid api key || field \'api_key\' is missing';
 
 
-router.get('/restart', async function (req, res) {
+router.get('/process', async function (req, res) {
   const parameters = req.body.text.split(' ');
   console.log(parameters);
+  console.log(req.body);
   res.status(200);
   // if (!req.body['api_key'] || req.headers['api_key'] !== process.env.SLACK_API_KEY) {
   //   return res.send({ status: 400, error: api_key_missing });
