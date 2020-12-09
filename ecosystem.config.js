@@ -2,7 +2,7 @@ module.exports = {
   apps: [{
     name: "slack_monitoring",
     script: "./server_sm.js",
-    watch: ["./.authorized_servers.json", "./.env"],
+    watch: ["./.env"],
     // Delay between restart
     autorestart: true,
     watch_delay: 100,
