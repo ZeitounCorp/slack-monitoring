@@ -1,12 +1,13 @@
 require('dotenv').config();
+const bodyParser = require('body-parser');
 const port = process.env.PORT || 8142;
 
 // Express service
 const express = require('express');
 const app = express();
 
-// Format responses and requests to json 
-app.use(express.json());
+// Need to parse the request using url encoded because of how slack send us the data (application/x-www-form-urlencoded)
+app.use(bodyParser.urlencoded({ extended: true }));
 
 /**
  * Routes' imports 
