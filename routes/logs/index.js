@@ -19,7 +19,7 @@ router.post('/gen', async function (req, res) {
 
   if (parameters.length < 3) return await send_response_back_to_slack(response_url, "in_channel", "One or more parameters are missing, right format is */get_logs <server_name> <api_key> <error_lvl>*, you can get more infos about this command by running */get_logs help*");
   if (parameters[1] !== process.env.SLACK_API_KEY) return await send_response_back_to_slack(response_url, "in_channel", api_key_missing);
-  if (isNaN(parameters[2]) || (parameters[2] && !accepted_error_lvls.includes(parameters[2]))) return await send_response_back_to_slack(response_url, "in_channel", "Parameter *<error_lvl>* must be type of String. *Options are ['debug', 'info', 'notice', 'warn', 'error', 'crit', 'alert', 'emerg']*");
+  if (!parameters[2] || (parameters[2] && !accepted_error_lvls.includes(parameters[2]))) return await send_response_back_to_slack(response_url, "in_channel", "Parameter *<error_lvl>* must be type of String. *Options are ['debug', 'info', 'notice', 'warn', 'error', 'crit', 'alert', 'emerg']*");
 
   const server_name = parameters[0];
   const server_url = `http://${server_name}.beecome.io:5555`;
